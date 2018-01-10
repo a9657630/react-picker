@@ -1,0 +1,141 @@
+.picker {
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+
+.picker-mask {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 999;
+  background-color: rgba(0,0,0,.6);
+}
+
+.picker-popup {
+  position: absolute;
+  left: 0;
+  /* bottom: -17.5em; */
+  bottom: 0;
+  z-index: 1000;
+  width: 100%;
+  /* height: 14em; */
+  background-color: #fff;
+}
+
+.picker-popup-header {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  /* width: 100%; */
+  height: 2.5em;
+  padding: 0 16px;
+  line-height: 2.5em;
+}
+
+.picker-popup-header::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  transform: scaleY(.5);
+  transform-origin: 0 100%;
+  border-bottom: 1px solid #E3E3E3;
+}
+
+.picker-button-confirm {
+  color: #1AAD19;
+}
+
+.picker-popup-content {
+  width: 100%;
+}
+
+.picker-view {
+  display: flex;
+  align-items: center;
+}
+
+
+/* pickerColumn.js */
+.picker-column {
+  width: 100%;
+}
+.picker-column-list {
+  position: relative;
+  /* height: 400px; */
+  height: 15em;
+  overflow: hidden;
+}
+.picker-column-window {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-image:
+          linear-gradient(to bottom, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.4)),
+          linear-gradient(to top, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.4));
+  background-position: top, bottom;
+  background-size: 100% 6.3em;
+  background-repeat: no-repeat;
+  z-index: 3;
+}
+.picker-column-indicator {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  z-index: 3;
+  height: 2.4em;
+  transform: translate3D(0, -50%, 0);
+  box-sizing: border-box;
+}
+.picker-column-indicator::before {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 1px;
+  content: '';
+  transform: scaleY(.5);
+  transform-origin: 0 0;
+  border-top: 1px solid #E5E5E5;
+}
+.picker-column-indicator::after {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  content: '';
+  transform: scaleY(.5);
+  transform-origin: 0 100%;
+  border-bottom: 1px solid #E5E5E5;
+}
+.picker-column-content {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  padding: 6.3em 0;
+  transform: translate3D(0, 0, 0);
+  z-index: 1;
+}
+.picker-column-item {
+  height: 2.4em;
+  padding: 0 10px;
+  font-size: 1em;
+  color: #000;
+  text-align: center;
+  line-height: 2.4em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.picker-column-item.selected {
+  font-size: 1.1em;
+}
