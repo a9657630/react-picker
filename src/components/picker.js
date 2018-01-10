@@ -6,7 +6,7 @@ import PickerView from './pickerView';
 
 import cityData from '../data/city';
 
-import '../css/common.css';
+// import '../css/common.css';
 import '../css/picker.css';
 
 /**

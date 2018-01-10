@@ -1,15 +1,24 @@
 {
   "name": "gn-react-picker",
-  "version": "1.0.0",
+  "version": "1.0.5",
   "description": "",
-  "main": "../src/components/picker.js",
+  "main": "index.js",
+  "style": "./build/css/picker.css",
   "scripts": {
+    "babel": "babel src --copy-files --source-maps --extensions .js --out-dir build",
     "start": "webpack-dev-server --watch --inline --config webpack.config.js --progress --colors --hot --host 127.0.0.1",
     "build": "webpack --config webpack.config.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "files": [
+    "build"
+  ],
   "author": "",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/a9657630/react-picker"
+  },
   "dependencies": {
     "classnames": "^2.2.5",
     "prop-types": "^15.6.0",
