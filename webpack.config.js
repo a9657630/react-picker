@@ -11,7 +11,7 @@ module.exports = {
   // devtool: 'cheap-module-eval-source-map',
   entry: {
     main: `${__dirname}/example/index.js`,
-    // vendor: ['react'],
+    vendor: ['react'],
   },
   output: {
     path: `${__dirname}/build`,
@@ -59,7 +59,7 @@ module.exports = {
             presets: ['env', 'react'],
           },
         },
-        exclude: /node_modules/,
+        // exclude: /node_modules/,
         // include: `${__dirname}/example/`,
       },
     ],
@@ -71,22 +71,22 @@ module.exports = {
     new webpack.optimize.LimitChunkCountPlugin({ maxChunks: 15 }),
     new webpack.optimize.MinChunkSizePlugin({ minChunkSize: 10000 }),
     new webpack.HotModuleReplacementPlugin(),
-    // new webpack.optimize.CommonsChunkPlugin({ // 提取第三方库, filename在output里设置
-    //   name: 'vendor',
-    //   minChunks: module => (
-    //     module.context && module.context.indexOf('node_modules') !== -1 // 只提取node_modules中的库
-    //   ),
-    // }),
-    // new webpack.optimize.CommonsChunkPlugin({
-    //   name: 'manifest',
-    //   minChunks: Infinity, // 无穷大
-    // }),
-    new HtmlWebpackPlugin({ template: `${__dirname}/example/index.html` }),
-    new CleanWebpackPlugin(['build'], { // 清理build文件夹
-      root: __dirname,
-      verbose: true,
-      dry: false,
+    new webpack.optimize.CommonsChunkPlugin({ // 提取第三方库, filename在output里设置
+      name: 'vendor',
+      minChunks: module => (
+        module.context && module.context.indexOf('node_modules') !== -1 // 只提取node_modules中的库
+      ),
     }),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'manifest',
+      minChunks: Infinity, // 无穷大
+    }),
+    new HtmlWebpackPlugin({ template: `${__dirname}/example/index.html` }),
+    // new CleanWebpackPlugin(['build'], { // 清理build文件夹
+    //   root: __dirname,
+    //   verbose: true,
+    //   dry: false,
+    // }),
     // new webpack.ProvidePlugin({
     //   humane: 'humane-js',
     // }),

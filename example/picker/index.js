@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import Picker from '../../src/components/picker';
+import Picker from '../../build/components/picker';
 
 const testData = {
   // 单列
@@ -48,7 +48,7 @@ class PickerDemo extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: testData.data1,
+      data: testData.data2,
       pickerOptions: {
         // depth: 1,
         // type: 'cityPicker',

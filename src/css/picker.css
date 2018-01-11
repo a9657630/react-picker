@@ -40,7 +40,7 @@
 }
 
 .picker-mask {
-  position: absolute;
+  position: fixed;
   left: 0;
   top: 0;
   right: 0;
@@ -50,7 +50,7 @@
 }
 
 .picker-popup {
-  position: absolute;
+  position: fixed;
   left: 0;
   /* bottom: -17.5em; */
   bottom: 0;
