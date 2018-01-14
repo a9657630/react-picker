@@ -1,7 +1,16 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import PickerColumn from './pickerColumn';
 
 class PickerView extends Component {
+  // static propTypes = {
+  //   data: PropTypes.object.isRequired,
+  //   value: PropTypes.object.isRequired,
+  //   depth: PropTypes.number.isRequired,
+  //   cascade: PropTypes.bool.isRequired,
+  //   onChange: PropTypes.object.isRequired,
+  // };
+
   constructor(props) {
     super(props);
     this.state = {};
@@ -14,18 +23,14 @@ class PickerView extends Component {
   getCascadeData(data, depthIndex, result) {
     const { value } = this.props;
     const column = [];
-    let selectData;
+    let selectData = data[0];
 
-    for (let i = 0, l = data.length; i < l; i++) {
+    for (let i = 0, l = data.length; i < l; i += 1) {
       column.push({ label: data[i].label, value: data[i].value });
 
       if (data[i].value === value[depthIndex]) {
         selectData = data[i];
       }
-    }
-
-    if (!selectData) {
-      selectData = data[0];
     }
 
     result.push(column);
@@ -38,7 +43,12 @@ class PickerView extends Component {
   }
 
   getColumns() {
-    const { data, value, depth, cascade } = this.props;
+    const {
+      data,
+      value,
+      depth,
+      cascade,
+    } = this.props;
     const columnArray = [];
     let columnData = [];
 
@@ -50,16 +60,14 @@ class PickerView extends Component {
       columnData = data;
     }
 
-    for (let i = 0; i < depth; i++) {
-      columnArray.push(
-        <PickerColumn
-          key={i}
-          data={columnData[i]}
-          value={value}
-          index={i}
-          onChange={(value) => { this.onChange(value); }}
-          />
-      );
+    for (let i = 0; i < depth; i += 1) {
+      columnArray.push(<PickerColumn
+        key={i}
+        data={columnData[i]}
+        value={value}
+        index={i}
+        onChange={(result) => { this.onChange(result); }}
+      />);
     }
 
     return columnArray;
@@ -75,5 +83,13 @@ class PickerView extends Component {
     );
   }
 }
+
+PickerView.propTypes = {
+  data: PropTypes.array.isRequired,
+  value: PropTypes.array.isRequired,
+  depth: PropTypes.number.isRequired,
+  cascade: PropTypes.bool.isRequired,
+  onChange: PropTypes.func.isRequired,
+};
 
 export default PickerView;

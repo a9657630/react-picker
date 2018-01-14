@@ -39,6 +39,10 @@
   user-select: none;
 }
 
+.picker div, .picker span {
+  outline: none;
+}
+
 .picker-mask {
   position: fixed;
   left: 0;

@@ -14,7 +14,7 @@ module.exports = {
     vendor: ['react'],
   },
   output: {
-    path: `${__dirname}/build`,
+    path: `${__dirname}/build/demo`,
     filename: '[name].js',
     chunkFilename: '[name].js',
   },
@@ -33,6 +33,13 @@ module.exports = {
           allChunks: true,
           use: 'css-loader',
         }),
+        // use: ['style-loader', 'css-loader', {
+        //   loader: 'postcss-loader',
+        //   options: {
+        //     plugins: () => [autoprefixer],
+        //   },
+        // }],
+        exclude: /^node_modules$/,
       },
       {
         // test: /style\.less/,
@@ -57,9 +64,12 @@ module.exports = {
           loader: 'babel-loader',
           query: {
             presets: ['env', 'react'],
+            plugins: [
+              'transform-runtime',
+            ],
           },
         },
-        // exclude: /node_modules/,
+        exclude: /node_modules/,
         // include: `${__dirname}/example/`,
       },
     ],
@@ -77,16 +87,16 @@ module.exports = {
         module.context && module.context.indexOf('node_modules') !== -1 // 只提取node_modules中的库
       ),
     }),
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'manifest',
-      minChunks: Infinity, // 无穷大
-    }),
-    new HtmlWebpackPlugin({ template: `${__dirname}/example/index.html` }),
-    // new CleanWebpackPlugin(['build'], { // 清理build文件夹
-    //   root: __dirname,
-    //   verbose: true,
-    //   dry: false,
+    // new webpack.optimize.CommonsChunkPlugin({
+    //   name: 'manifest',
+    //   minChunks: Infinity, // 无穷大
     // }),
+    new HtmlWebpackPlugin({ template: `${__dirname}/example/index.html` }),
+    new CleanWebpackPlugin(['demo'], { // 清理build文件夹
+      root: `${__dirname}/build`,
+      verbose: true,
+      dry: false,
+    }),
     // new webpack.ProvidePlugin({
     //   humane: 'humane-js',
     // }),

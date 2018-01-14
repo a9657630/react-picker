@@ -48,16 +48,17 @@ class PickerDemo extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: testData.data2,
+      data: testData.data1,
       pickerOptions: {
         // depth: 1,
         // type: 'cityPicker',
       },
-      value: [],
+      value: ['2'],
       label: [],
     };
   }
 
+  /* eslint-disable no-console */
   onChange(data) {
     console.log(data);
     const value = [];
@@ -73,13 +74,14 @@ class PickerDemo extends Component {
       label,
     });
   }
+  /* eslint-enable no-console */
 
   render() {
     return (
       <div>
         <Picker
           data={this.state.data}
-          // value={this.state.value}
+          value={this.state.value}
           options={this.state.pickerOptions}
           onChange={(data) => { this.onChange(data); }}
         >
