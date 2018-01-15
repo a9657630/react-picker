@@ -1,4 +1,4 @@
-# react-picker
+# gn-react-picker
 
 ## Install
 ```
