@@ -5,16 +5,17 @@
   "main": "index.js",
   "style": "./build/css/picker.css",
   "scripts": {
-    "babel": "babel src --copy-files --extensions .js --out-dir build",
-    "start": "webpack-dev-server --watch --inline --config webpack.config.js --progress --colors --hot --host 127.0.0.1",
+    "babel": "npm run clean && babel src --copy-files --extensions .js --out-dir build",
+    "start": "webpack-dev-server --watch --inline --config webpack.config.js --progress --colors --hot --host 192.168.1.2",
     "build": "webpack --config webpack.config.js",
+    "clean": "rm -rf build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "files": [
     "build"
   ],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/a9657630/react-picker"

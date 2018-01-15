@@ -5,9 +5,9 @@ import Picker from '../../build/components/picker';
 const testData = {
   // 单列
   data1: [
-    { label: '1', value: '1' },
-    { label: '2', value: '2' },
-    { label: '3', value: '3' },
+    { label: 'A', value: 'A' },
+    { label: 'B', value: 'B' },
+    { label: 'C', value: 'C' },
   ],
 
   // 多列
@@ -48,7 +48,7 @@ class PickerDemo extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: testData.data1,
+      data: testData.data3,
       pickerOptions: {
         // depth: 1,
         // type: 'cityPicker',
@@ -81,8 +81,8 @@ class PickerDemo extends Component {
       <div>
         <Picker
           data={this.state.data}
-          value={this.state.value}
-          options={this.state.pickerOptions}
+          // value={this.state.value}
+          // options={this.state.pickerOptions}
           onChange={(data) => { this.onChange(data); }}
         >
           <div className="list-item">
