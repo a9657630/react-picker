@@ -48,7 +48,7 @@ class PickerDemo extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: testData.data3,
+      data: testData.data2,
       pickerOptions: {
         // depth: 1,
         // type: 'cityPicker',
@@ -82,7 +82,7 @@ class PickerDemo extends Component {
         <Picker
           data={this.state.data}
           // value={this.state.value}
-          // options={this.state.pickerOptions}
+          options={this.state.pickerOptions}
           onChange={(data) => { this.onChange(data); }}
         >
           <div className="list-item">
